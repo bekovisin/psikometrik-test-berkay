@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Search, X, User, Brain, Wrench, MessageCircle, LayoutTemplate, PenTool } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export interface TemplateStage {
   id: string;
@@ -133,6 +134,8 @@ interface InitialSelectionProps {
 }
 
 function InitialSelection({ onClose, onSelectTemplates }: InitialSelectionProps) {
+  const router = useRouter();
+
   return (
     <>
       <div className="flex justify-between items-center mb-5 pb-5 border-b border-slate-200">
@@ -163,7 +166,7 @@ function InitialSelection({ onClose, onSelectTemplates }: InitialSelectionProps)
         <button 
           onClick={() => {
             onClose();
-            // router.push('/panel/projeler/yeni'); // We can leave this as a placeholder or remove it for now since there's no actual page yet.
+            router.push('/panel/projeler/yeni');
           }}
           className="flex flex-col items-start gap-4 p-6 rounded-xl border-2 border-slate-200 hover:border-indigo-600 hover:bg-indigo-50/50 transition-all text-left group outline-none focus:ring-2 focus:ring-indigo-500"
         >
