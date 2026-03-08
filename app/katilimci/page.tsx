@@ -4,7 +4,7 @@ import { ClipboardList, Clock, CheckCircle2, Trophy } from 'lucide-react';
 
 export default function KatilimciDashboard() {
   return (
-    <div className="flex flex-col gap-6 lg:gap-8">
+    <div className="max-w-[1400px] mx-auto flex flex-col gap-6 lg:gap-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-sm flex items-center gap-4">
           <div className="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center"><ClipboardList size={20} /></div>

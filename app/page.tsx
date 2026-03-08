@@ -73,6 +73,7 @@ export default function Dashboard() {
 
   if (!stats) {
     return (
+      <div className="max-w-[1400px] mx-auto">
       <div className="flex flex-col gap-6 lg:gap-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {[1, 2, 3, 4].map(i => (
@@ -81,12 +82,14 @@ export default function Dashboard() {
         </div>
         <div className="bg-white border border-slate-200 rounded-lg shadow-sm h-64 animate-pulse" />
       </div>
+      </div>
     );
   }
 
   const maxByCategory = Math.max(...Object.values(stats.byCategory as Record<string, number>), 1);
 
   return (
+    <div className="max-w-[1400px] mx-auto">
     <div className="flex flex-col gap-6 lg:gap-8">
       {/* Stats Overview */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
@@ -324,6 +327,7 @@ export default function Dashboard() {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 }

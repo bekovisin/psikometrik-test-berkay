@@ -162,9 +162,8 @@ export default function ProjelerPage() {
 
   return (
     <div className="flex flex-col gap-0">
-      <div className="flex flex-col gap-0 px-4 lg:px-6">
-      {/* Header */}
-      <div className="flex flex-col gap-4 pb-4 border-b border-slate-200 bg-white pt-0">
+      {/* Başlık ve tab menü: 1400px sınırı yok, tam genişlik */}
+      <div className="bg-white border-b border-slate-200 -mx-4 lg:-mx-6 px-4 lg:px-6 pt-4 lg:pt-6 pb-4">
         <div className="flex justify-between items-end">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0">
@@ -177,8 +176,8 @@ export default function ProjelerPage() {
           </div>
         </div>
 
-        {/* Tabs & Controls */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+        {/* Tab menü ve kontroller */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mt-4">
           <div className="flex gap-5 -mb-[1px] overflow-x-auto w-full sm:w-auto no-scrollbar">
             {(['Tümü', 'Aktif', 'Beklemede', 'Tamamlandı', 'Arşiv'] as const).map((tab) => (
               <button
@@ -237,9 +236,9 @@ export default function ProjelerPage() {
         </div>
       </div>
 
-      {/* Bulk Actions Bar */}
+      {/* Toplu işlem çubuğu: tam genişlik */}
       {isSelectMode && selectedIds.size > 0 && (
-        <div className="sticky top-0 z-20 bg-white border-b border-slate-200 py-2.5 flex justify-between items-center shadow-sm">
+        <div className="sticky top-0 z-20 bg-white border-b border-slate-200 py-2.5 flex justify-between items-center shadow-sm -mx-4 lg:-mx-6 px-4 lg:px-6">
           <span className="text-xs font-bold text-slate-700">{selectedIds.size} proje seçildi</span>
           <div className="flex items-center gap-2">
             <DropdownMenu.Root>
@@ -274,8 +273,8 @@ export default function ProjelerPage() {
         </div>
       )}
 
-      {/* Grid */}
-      <div className="pt-5">
+      {/* Kart grid: max 1400px */}
+      <div className="max-w-[1400px] mx-auto px-4 lg:px-6 pt-5 w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5">
           {/* Yeni Proje Kartı */}
           {filter === 'Tümü' && (
@@ -365,7 +364,6 @@ export default function ProjelerPage() {
                     )}
                   </div>
 
-                  <h3 className="font-bold text-slate-900 text-sm mb-1.5 line-clamp-2">{p.title}</h3>
                   <p className="text-xs text-slate-500 mb-3 line-clamp-2 flex-1 leading-relaxed">{p.description}</p>
 
                   <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[10px] text-slate-500 font-medium mb-4">
@@ -416,7 +414,6 @@ export default function ProjelerPage() {
             );
           })}
         </div>
-      </div>
       </div>
 
       {/* Confirm Modal */}

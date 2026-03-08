@@ -12,7 +12,7 @@ const transactions = [
 
 export default function FaturalamaPage() {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="max-w-[1400px] mx-auto flex flex-col gap-6">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
         <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg p-5 shadow-sm relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-10 -mt-10 blur-2xl pointer-events-none" />

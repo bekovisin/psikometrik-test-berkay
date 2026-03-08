@@ -16,7 +16,7 @@ export default function OturumlarPage() {
   const completed = sessions.filter(s => s.status === 'Tamamlandı').length;
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="max-w-[1400px] mx-auto flex flex-col gap-6">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-sm flex items-center gap-4">
           <div className="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center"><Clock size={20} /></div>

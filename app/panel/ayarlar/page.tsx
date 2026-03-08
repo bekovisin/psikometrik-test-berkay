@@ -4,6 +4,7 @@ import { Settings, Bell, Shield, Globe } from 'lucide-react';
 
 export default function AyarlarPage() {
   return (
+    <div className="max-w-[1400px] mx-auto">
     <div className="flex flex-col gap-6 max-w-3xl">
       <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
         <div className="p-5 border-b border-slate-100 flex items-center gap-3 bg-slate-50/50">
@@ -75,6 +76,7 @@ export default function AyarlarPage() {
           Kaydet
         </button>
       </div>
+    </div>
     </div>
   );
 }
