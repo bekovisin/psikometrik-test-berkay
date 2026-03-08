@@ -24,8 +24,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} onOpen={() => setSidebarOpen(true)} />
           <main className="flex-1 flex flex-col min-w-0 overflow-hidden">
             <Header onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
-            <div className="flex-1 overflow-y-auto p-4 lg:p-8">
-              {children}
+            <div className="flex-1 overflow-y-auto p-4 lg:p-6">
+              <div className="max-w-[1400px] mx-auto">
+                {children}
+              </div>
             </div>
           </main>
         </div>
