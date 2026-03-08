@@ -6,7 +6,7 @@ import { BottomWidgets } from '@/components/musteri-paneli/BottomWidgets';
 
 export default function PanelDashboard() {
   return (
-    <div className="flex flex-col gap-4 lg:gap-6">
+    <div className="flex flex-col gap-5 lg:gap-6">
       <StatsOverview />
       <ProjectTracking />
       <BottomWidgets />

@@ -6,34 +6,34 @@ import { motion } from 'motion/react';
 
 function Pagination({ page, totalPages, onPageChange, rowsPerPage, onRowsChange, rowsOptions }: any) {
   return (
-    <div className="flex items-center justify-between px-3 py-2 border-t border-slate-100 bg-white shrink-0">
-      <div className="flex items-center gap-1.5">
-        <span className="text-[10px] text-slate-500 font-medium">Göster:</span>
+    <div className="flex items-center justify-between px-4 py-2.5 border-t border-slate-100 bg-white shrink-0">
+      <div className="flex items-center gap-2">
+        <span className="text-xs text-slate-500 font-medium">Göster:</span>
         <select
           value={rowsPerPage}
           onChange={(e) => onRowsChange(Number(e.target.value))}
-          className="text-[10px] border border-slate-200 rounded px-1.5 py-0.5 bg-slate-50 text-slate-700 outline-none focus:border-indigo-500 font-medium cursor-pointer"
+          className="text-xs border border-slate-200 rounded px-2 py-1 bg-slate-50 text-slate-700 outline-none focus:border-indigo-500 font-medium cursor-pointer"
         >
           {rowsOptions.map((opt: number) => <option key={opt} value={opt}>{opt}</option>)}
         </select>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2.5">
         <button
           disabled={page <= 1}
           onClick={() => onPageChange(page - 1)}
-          className="p-0.5 rounded border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="p-1 rounded border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
-          <ChevronLeft size={12} />
+          <ChevronLeft size={14} />
         </button>
-        <span className="text-[10px] text-slate-600 font-medium min-w-[60px] text-center">
+        <span className="text-xs text-slate-600 font-medium min-w-[65px] text-center">
           Sayfa {page} / {Math.max(1, totalPages)}
         </span>
         <button
           disabled={page >= totalPages}
           onClick={() => onPageChange(page + 1)}
-          className="p-0.5 rounded border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="p-1 rounded border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
-          <ChevronRight size={12} />
+          <ChevronRight size={14} />
         </button>
       </div>
     </div>
@@ -52,8 +52,8 @@ function MatchScoreBadge({ score }: { score: number }) {
   }
 
   return (
-    <div className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold transition-transform hover:scale-110 cursor-default ${colorClass}`}>
-      <svg className={`w-3 h-3 ${iconColor}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+    <div className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold transition-transform hover:scale-110 cursor-default ${colorClass}`}>
+      <svg className={`w-3.5 h-3.5 ${iconColor}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 12a9 9 0 1 1-9-9" />
       </svg>
       {score}%
@@ -77,8 +77,8 @@ function SkillBadge({ score, mode }: { score: number; mode: 'level' | 'score' })
       iconColor = 'text-amber-500';
     }
     return (
-      <div className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold transition-transform hover:scale-110 cursor-default ${colorClass}`}>
-        <svg className={`w-3 h-3 ${iconColor}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+      <div className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold transition-transform hover:scale-110 cursor-default ${colorClass}`}>
+        <svg className={`w-3.5 h-3.5 ${iconColor}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 12a9 9 0 1 1-9-9" />
         </svg>
         {score}%
@@ -88,24 +88,24 @@ function SkillBadge({ score, mode }: { score: number; mode: 'level' | 'score' })
 
   const configs: Record<string, { icon: React.ReactNode; label: string; cls: string }> = {
     High: {
-      icon: <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="#10B981" /><path d="M4 7L6 9L10 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>,
+      icon: <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="#10B981" /><path d="M4 7L6 9L10 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>,
       label: 'Yüksek',
       cls: 'text-emerald-700 bg-emerald-50',
     },
     Medium: {
-      icon: <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="#F59E0B" /><path d="M4 7H10" stroke="white" strokeWidth="1.5" strokeLinecap="round" /></svg>,
+      icon: <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="#F59E0B" /><path d="M4 7H10" stroke="white" strokeWidth="1.5" strokeLinecap="round" /></svg>,
       label: 'Orta',
       cls: 'text-amber-700 bg-amber-50',
     },
     Low: {
-      icon: <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="#EF4444" /><path d="M4.5 4.5L9.5 9.5M9.5 4.5L4.5 9.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" /></svg>,
+      icon: <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="#EF4444" /><path d="M4.5 4.5L9.5 9.5M9.5 4.5L4.5 9.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" /></svg>,
       label: 'Düşük',
       cls: 'text-rose-700 bg-rose-50',
     },
   };
   const c = configs[level];
   return (
-    <div className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold transition-transform hover:scale-110 cursor-default ${c.cls}`}>
+    <div className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold transition-transform hover:scale-110 cursor-default ${c.cls}`}>
       {c.icon}
       {c.label}
     </div>
@@ -140,11 +140,11 @@ const initialTrackingData = [
 
 function SortIcon({ columnKey, sortConfig }: { columnKey: string; sortConfig: { key: string; direction: 'asc' | 'desc' } | null }) {
   if (sortConfig?.key !== columnKey) {
-    return <ArrowUpDown size={10} className="text-slate-300 ml-0.5 inline-block" />;
+    return <ArrowUpDown size={11} className="text-slate-300 ml-0.5 inline-block" />;
   }
   return sortConfig.direction === 'asc'
-    ? <ArrowUp size={10} className="text-indigo-500 ml-0.5 inline-block" />
-    : <ArrowDown size={10} className="text-indigo-500 ml-0.5 inline-block" />;
+    ? <ArrowUp size={11} className="text-indigo-500 ml-0.5 inline-block" />
+    : <ArrowDown size={11} className="text-indigo-500 ml-0.5 inline-block" />;
 }
 
 export function BottomWidgets() {
@@ -204,13 +204,13 @@ export function BottomWidgets() {
   }, [trackingPage, trackingRowsPerPage]);
 
   const getThClass = (key: string) => {
-    const baseClass = 'px-3 py-2 text-[10px] font-bold uppercase tracking-wider whitespace-nowrap cursor-pointer transition-colors';
+    const baseClass = 'px-3.5 py-2.5 text-xs font-bold uppercase tracking-wider whitespace-nowrap cursor-pointer transition-colors';
     if (sortConfig?.key === key) return `${baseClass} bg-indigo-50/80 text-indigo-700`;
     return `${baseClass} text-slate-500 hover:bg-slate-100`;
   };
 
   const getTdClass = (key: string, extraClass: string = '') => {
-    const baseClass = `px-3 py-1.5 whitespace-nowrap ${extraClass}`;
+    const baseClass = `px-3.5 py-2 whitespace-nowrap ${extraClass}`;
     if (sortConfig?.key === key) return `${baseClass} bg-indigo-50/30`;
     return baseClass;
   };
@@ -225,35 +225,35 @@ export function BottomWidgets() {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-4">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-5">
       {/* Aday Havuzu */}
-      <div className="col-span-1 lg:col-span-2 bg-white border border-slate-200 rounded-lg shadow-sm flex flex-col overflow-hidden h-[480px]">
-        <div className="p-3 border-b border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-slate-50/50 shrink-0">
-          <div className="flex items-center gap-2">
-            <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Aday Havuzu Analizi</h3>
-            <button className="flex items-center gap-1 px-2 py-0.5 bg-white border border-slate-200 rounded text-[10px] font-bold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm">
+      <div className="col-span-1 lg:col-span-2 bg-white border border-slate-200 rounded-lg shadow-sm flex flex-col overflow-hidden h-[520px]">
+        <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-slate-50/50 shrink-0">
+          <div className="flex items-center gap-2.5">
+            <h3 className="text-[13px] font-bold text-slate-900 uppercase tracking-wider">Aday Havuzu Analizi</h3>
+            <button className="flex items-center gap-1.5 px-2.5 py-1 bg-white border border-slate-200 rounded-md text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm">
               Mono Sigorta Projesi
-              <ChevronDown size={12} className="text-slate-400" />
+              <ChevronDown size={13} className="text-slate-400" />
             </button>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="flex bg-slate-100 p-0.5 rounded border border-slate-200">
+          <div className="flex items-center gap-2.5">
+            <div className="flex bg-slate-100 p-0.5 rounded-md border border-slate-200">
               <button
                 onClick={() => setDisplayMode('level')}
-                className={`px-2 py-0.5 text-[10px] font-bold rounded transition-colors ${displayMode === 'level' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+                className={`px-2.5 py-1 text-xs font-bold rounded transition-colors ${displayMode === 'level' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
               >
                 Düzey
               </button>
               <button
                 onClick={() => setDisplayMode('score')}
-                className={`px-2 py-0.5 text-[10px] font-bold rounded transition-colors ${displayMode === 'score' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+                className={`px-2.5 py-1 text-xs font-bold rounded transition-colors ${displayMode === 'score' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
               >
                 Skor
               </button>
             </div>
-            <button className="flex items-center gap-1 px-2 py-1 bg-indigo-50 text-[10px] font-bold text-indigo-700 border border-indigo-100 rounded hover:bg-indigo-100 transition-colors">
+            <button className="flex items-center gap-1.5 px-2.5 py-1.5 bg-indigo-50 text-xs font-bold text-indigo-700 border border-indigo-100 rounded-md hover:bg-indigo-100 transition-colors">
               Tümünü Gör
-              <ArrowRight size={12} />
+              <ArrowRight size={13} />
             </button>
           </div>
         </div>
@@ -262,8 +262,8 @@ export function BottomWidgets() {
           <table className="w-full text-left border-collapse min-w-[900px]">
             <thead>
               <tr className="border-b border-slate-100 bg-slate-50/80">
-                <th colSpan={4} className="px-3 py-1.5 border-r border-slate-100"></th>
-                <th colSpan={5} className="px-3 py-1.5 text-center text-[10px] font-bold text-indigo-600 uppercase tracking-wider bg-indigo-50/50 border-b-2 border-indigo-100">
+                <th colSpan={4} className="px-3.5 py-2 border-r border-slate-100"></th>
+                <th colSpan={5} className="px-3.5 py-2 text-center text-xs font-bold text-indigo-600 uppercase tracking-wider bg-indigo-50/50 border-b-2 border-indigo-100">
                   OCEAN Raporu
                 </th>
               </tr>
@@ -283,16 +283,16 @@ export function BottomWidgets() {
               {paginatedCandidates.map((c, i) => (
                 <tr key={i} className="hover:bg-slate-50/80 transition-colors group cursor-pointer">
                   <td className={getTdClass('name')}>
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-2">
                       <button className="p-1 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors" title="İncele">
-                        <Search size={12} />
+                        <Search size={13} />
                       </button>
-                      <span className="text-xs font-semibold text-slate-700 group-hover:text-indigo-600 transition-colors">{c.name}</span>
+                      <span className="text-[13px] font-semibold text-slate-700 group-hover:text-indigo-600 transition-colors">{c.name}</span>
                     </div>
                   </td>
-                  <td className={getTdClass('date', 'text-[10px] font-medium text-slate-500')}>{c.date}</td>
+                  <td className={getTdClass('date', 'text-xs font-medium text-slate-500')}>{c.date}</td>
                   <td className={getTdClass('stage')}>
-                    <span className={`inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold border transition-all hover:scale-105 cursor-default ${getStageStyles(c.stage)}`}>
+                    <span className={`inline-flex items-center px-2.5 py-0.5 rounded text-xs font-bold border transition-all hover:scale-105 cursor-default ${getStageStyles(c.stage)}`}>
                       {c.stage}
                     </span>
                   </td>
@@ -320,18 +320,18 @@ export function BottomWidgets() {
       </div>
 
       {/* Anlık Aday Takibi */}
-      <div className="col-span-1 bg-white border border-slate-200 rounded-lg shadow-sm flex flex-col h-[480px]">
-        <div className="p-3 border-b border-slate-100 flex justify-between items-center shrink-0 bg-slate-50/50 rounded-t-lg">
-          <div className="flex items-center gap-1.5">
-            <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Anlık Aday Takibi</h3>
-            <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
+      <div className="col-span-1 bg-white border border-slate-200 rounded-lg shadow-sm flex flex-col h-[520px]">
+        <div className="p-4 border-b border-slate-100 flex justify-between items-center shrink-0 bg-slate-50/50 rounded-t-lg">
+          <div className="flex items-center gap-2">
+            <h3 className="text-[13px] font-bold text-slate-900 uppercase tracking-wider">Anlık Aday Takibi</h3>
+            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
           </div>
-          <button className="flex items-center gap-1 text-[10px] font-bold text-indigo-600 hover:text-indigo-700 transition-colors uppercase tracking-wider">
+          <button className="flex items-center gap-1 text-xs font-bold text-indigo-600 hover:text-indigo-700 transition-colors uppercase tracking-wider">
             Tümünü Gör
-            <ArrowRight size={10} />
+            <ArrowRight size={12} />
           </button>
         </div>
-        <div className="flex-1 overflow-y-auto p-1.5 flex flex-col">
+        <div className="flex-1 overflow-y-auto p-2 flex flex-col">
           {paginatedTracking.map((item, i) => (
             <TrackingItem key={i} name={item.name} time={item.time} step={item.step} status={item.status} />
           ))}
@@ -361,24 +361,24 @@ function TrackingItem({ name, time, step, status }: { name: string; time: string
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      className="p-3 hover:bg-slate-50 rounded-lg transition-colors border-b border-slate-50 last:border-0 group cursor-pointer"
+      className="p-3.5 hover:bg-slate-50 rounded-lg transition-colors border-b border-slate-50 last:border-0 group cursor-pointer"
     >
       <div className="flex justify-between items-start mb-3">
-        <span className="font-bold text-slate-900 text-[11px]">{name}</span>
-        <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">{time}</span>
+        <span className="font-bold text-slate-900 text-[13px]">{name}</span>
+        <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">{time}</span>
       </div>
 
-      <div className="mb-2">
-        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Değerlendirme Aşaması</span>
+      <div className="mb-2.5">
+        <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Değerlendirme Aşaması</span>
       </div>
 
-      <div className="relative flex items-center justify-between w-full px-1.5">
-        <div className="absolute left-1.5 right-1.5 h-[2px] bg-slate-100 top-1/2 -translate-y-1/2 z-0" />
+      <div className="relative flex items-center justify-between w-full px-2">
+        <div className="absolute left-2 right-2 h-[2px] bg-slate-100 top-1/2 -translate-y-1/2 z-0" />
         <motion.div
           initial={{ width: 0 }}
-          animate={{ width: `calc(${progressPercent}% - 12px)` }}
+          animate={{ width: `calc(${progressPercent}% - 16px)` }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className={`absolute left-1.5 h-[2px] ${activeColor} top-1/2 -translate-y-1/2 z-0`}
+          className={`absolute left-2 h-[2px] ${activeColor} top-1/2 -translate-y-1/2 z-0`}
         />
 
         {[0, 1, 2, 3, 4, 5].map((i) => {
@@ -390,21 +390,21 @@ function TrackingItem({ name, time, step, status }: { name: string; time: string
                 initial={isActive ? { scale: 0.8 } : false}
                 animate={isActive ? { scale: [0.8, 1.2, 1] } : false}
                 transition={{ duration: 0.5, ease: 'easeOut' }}
-                className={`w-3.5 h-3.5 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125 cursor-default ${
+                className={`w-4 h-4 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-125 cursor-default ${
                   isCompleted
                     ? `${activeColor} shadow-sm`
                     : isActive
-                      ? `${activeColor} shadow-md ring-3 ${activeRing}`
+                      ? `${activeColor} shadow-md ring-4 ${activeRing}`
                       : 'bg-slate-100 border border-slate-200'
                 }`}
               >
                 {isCompleted && (
-                  <svg className="w-2 h-2 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                   </svg>
                 )}
                 {isActive && (
-                  <div className="w-1 h-1 bg-white rounded-full animate-pulse" />
+                  <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
                 )}
               </motion.div>
             </div>
@@ -412,7 +412,7 @@ function TrackingItem({ name, time, step, status }: { name: string; time: string
         })}
       </div>
 
-      <p className="text-[9px] text-slate-600 font-bold mt-3 tracking-tight uppercase group-hover:text-indigo-600 transition-colors">{status}</p>
+      <p className="text-[11px] text-slate-600 font-bold mt-3 tracking-tight uppercase group-hover:text-indigo-600 transition-colors">{status}</p>
     </motion.div>
   );
 }
