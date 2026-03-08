@@ -10,6 +10,7 @@ import { subModules } from '@/data/sub-modules';
 
 const pageTitles: Record<string, { title: string; subtitle?: string }> = {
   '/': { title: 'Dashboard', subtitle: 'Soru bankası genel görünümü' },
+  '/musteri-paneli': { title: 'Müşteri Paneli', subtitle: 'Proje takibi ve aday değerlendirme' },
   '/admin/soru-bankasi': { title: 'Soru Bankası', subtitle: 'Tüm kategoriler ve alt modüller' },
   '/admin/soru-bankasi/yeni': { title: 'Yeni Soru Ekle', subtitle: 'Soru bankasına yeni soru ekleyin' },
   '/admin/soru-uretici': { title: 'Soru Üretici', subtitle: 'AI destekli soru üretim aracı' },

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutGrid, Library, Zap, Settings, Receipt, Plus, X, Coins, Menu } from 'lucide-react';
+import { LayoutGrid, Library, Zap, Settings, Receipt, Plus, X, Coins, Menu, Users } from 'lucide-react';
 import { categories } from '@/data/categories';
 
 const colorMap: Record<string, string> = {
@@ -29,6 +29,7 @@ const bgMap: Record<string, string> = {
 
 const navItems = [
   { icon: <LayoutGrid size={18} />, label: 'Dashboard', href: '/' },
+  { icon: <Users size={18} />, label: 'Müşteri Paneli', href: '/musteri-paneli' },
   { icon: <Library size={18} />, label: 'Soru Bankası', href: '/admin/soru-bankasi' },
   { icon: <Zap size={18} />, label: 'Soru Üretici', href: '/admin/soru-uretici' },
 ];
