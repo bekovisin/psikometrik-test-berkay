@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Search, X, User, Brain, Wrench, MessageCircle, LayoutTemplate, PenTool } from 'lucide-react';
-import { useRouter } from 'next/navigation';
 
 export interface TemplateStage {
   id: string;
@@ -134,14 +133,12 @@ interface InitialSelectionProps {
 }
 
 function InitialSelection({ onClose, onSelectTemplates }: InitialSelectionProps) {
-  const router = useRouter();
-
   return (
     <>
       <div className="flex justify-between items-center mb-5 pb-5 border-b border-slate-200">
         <Dialog.Title className="text-xl font-bold text-slate-900">Yeni Proje Oluştur</Dialog.Title>
-        <Dialog.Close className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 text-slate-500 transition-colors outline-none focus:ring-2 focus:ring-indigo-500">
-          <X size={20} />
+        <Dialog.Close className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-slate-100 text-slate-500 transition-colors outline-none focus:ring-2 focus:ring-indigo-500">
+          <X size={18} />
         </Dialog.Close>
       </div>
       
@@ -251,8 +248,8 @@ function TemplateSelectionContent({ templates, onClose }: TemplateSelectionProps
 
       {/* Right Side: Template Details */}
       <div className="w-full md:w-[400px] shrink-0 flex flex-col h-1/2 md:h-full bg-slate-50 relative">
-        <Dialog.Close className="absolute right-5 top-5 w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-500 transition-colors z-10 shadow-sm outline-none focus:ring-2 focus:ring-indigo-500">
-          <X size={16} />
+        <Dialog.Close className="absolute right-5 top-5 w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-500 transition-colors z-10 shadow-sm outline-none focus:ring-2 focus:ring-indigo-500">
+          <X size={18} />
         </Dialog.Close>
 
         {selectedTemplate ? (

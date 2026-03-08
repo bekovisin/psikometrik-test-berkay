@@ -417,25 +417,25 @@ export default function ProjelerPage() {
               </div>
               <div>
                 <Dialog.Title className="text-xl font-bold text-slate-900">{modalConfig.title}</Dialog.Title>
-                <Dialog.Description className="text-base text-slate-500 mt-1.5">{modalConfig.description}</Dialog.Description>
+                <Dialog.Description className="text-[13px] text-slate-500 mt-1.5">{modalConfig.description}</Dialog.Description>
               </div>
             </div>
             <div className="flex gap-2 mt-2">
               <button
                 onClick={closeModal}
-                className="flex-1 py-2 bg-white border border-slate-200 text-slate-700 text-base font-bold rounded-lg hover:bg-slate-50 transition-colors"
+                className="flex-1 py-2 bg-white border border-slate-200 text-slate-700 text-[13px] font-bold rounded-lg hover:bg-slate-50 transition-colors"
               >
                 İptal
               </button>
               <button
                 onClick={modalConfig.onConfirm}
-                className={`flex-1 py-2 text-white text-base font-bold rounded-lg transition-colors ${modalConfig.actionType === 'danger' ? 'bg-rose-600 hover:bg-rose-700' : 'bg-indigo-600 hover:bg-indigo-700'}`}
+                className={`flex-1 py-2 text-white text-[13px] font-bold rounded-lg transition-colors ${modalConfig.actionType === 'danger' ? 'bg-rose-600 hover:bg-rose-700' : 'bg-indigo-600 hover:bg-indigo-700'}`}
               >
                 {modalConfig.actionLabel}
               </button>
             </div>
-            <Dialog.Close className="absolute right-3 top-3 rounded-sm opacity-70 hover:opacity-100 focus:outline-none">
-              <X className="h-4 w-4" />
+            <Dialog.Close className="absolute right-3 top-3 w-9 h-9 flex items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-700 focus:outline-none transition-colors">
+              <X className="h-[18px] w-[18px]" />
               <span className="sr-only">Kapat</span>
             </Dialog.Close>
           </Dialog.Content>

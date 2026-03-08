@@ -175,7 +175,7 @@ export default function Sidebar({ open, onClose, onOpen }: { open: boolean; onCl
         transform transition-transform duration-200 ease-in-out
         ${open ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
-        {/* Logo + Panel Switcher */}
+        {/* Logo */}
         <div className="px-4 pt-4 pb-3 border-b border-slate-200 shrink-0">
           <Link href={currentPanelInfo.home} className="flex items-center gap-3 mb-3" onClick={onClose}>
             <div className="w-8 h-8 bg-indigo-600 text-white flex items-center justify-center font-bold rounded-lg shadow-sm text-sm">
@@ -193,41 +193,6 @@ export default function Sidebar({ open, onClose, onOpen }: { open: boolean; onCl
             <X size={20} />
           </button>
 
-          {/* Panel Dropdown */}
-          <div className="relative">
-            <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="w-full flex items-center justify-between px-3 py-2 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition-colors text-sm font-medium text-slate-700"
-            >
-              <div className="flex items-center gap-2">
-                <span className={currentPanelInfo.color}>{currentPanelInfo.icon}</span>
-                {currentPanelInfo.label}
-              </div>
-              <ChevronDown size={14} className={`text-slate-400 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
-            </button>
-
-            {dropdownOpen && (
-              <>
-                <div className="fixed inset-0 z-40" onClick={() => setDropdownOpen(false)} />
-                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-slate-200 rounded-lg shadow-lg z-50 py-1">
-                  {panels.map(p => (
-                    <button
-                      key={p.id}
-                      onClick={() => switchPanel(p.id)}
-                      className={`w-full flex items-center gap-2.5 px-3 py-2 text-sm font-medium transition-colors ${
-                        p.id === activePanel
-                          ? 'bg-indigo-50 text-indigo-700'
-                          : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-                      }`}
-                    >
-                      <span className={p.color}>{p.icon}</span>
-                      {p.label}
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
         </div>
 
         {/* Navigation */}
@@ -287,6 +252,46 @@ export default function Sidebar({ open, onClose, onOpen }: { open: boolean; onCl
         {/* Bottom Section */}
         <div className="p-4 border-t border-slate-200 flex flex-col gap-3">
           {showCreditCard && (
+            <>
+              <div className="relative">
+                <button
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  className="w-full flex items-center justify-between px-3 py-2 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition-colors text-sm font-medium text-slate-700"
+                >
+                  <div className="flex items-center gap-2">
+                    <span className={currentPanelInfo.color}>{currentPanelInfo.icon}</span>
+                    {currentPanelInfo.label}
+                  </div>
+                  <ChevronDown size={14} className={`text-slate-400 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {dropdownOpen && (
+                  <>
+                    <div className="fixed inset-0 z-40" onClick={() => setDropdownOpen(false)} />
+                    <div className="absolute bottom-full left-0 right-0 mb-1 bg-white border border-slate-200 rounded-lg shadow-lg z-50 py-1">
+                      {panels.map(p => (
+                        <button
+                          key={p.id}
+                          onClick={() => switchPanel(p.id)}
+                          className={`w-full flex items-center gap-2.5 px-3 py-2 text-sm font-medium transition-colors ${
+                            p.id === activePanel
+                              ? 'bg-indigo-50 text-indigo-700'
+                              : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                          }`}
+                        >
+                          <span className={p.color}>{p.icon}</span>
+                          {p.label}
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+              <div className="h-px bg-slate-200" />
+            </>
+          )}
+
+          {showCreditCard && (
             <Link href="/panel/faturalama" onClick={onClose}>
               <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg p-4 shadow-sm relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-white opacity-10 rounded-full -mr-8 -mt-8 blur-xl pointer-events-none" />
@@ -319,10 +324,20 @@ export default function Sidebar({ open, onClose, onOpen }: { open: boolean; onCl
             </Link>
           )}
 
-          <button className="w-full flex items-center justify-center gap-2 text-slate-500 hover:text-rose-600 hover:bg-rose-50 px-4 py-2 rounded-lg text-sm font-medium transition-colors border border-slate-200">
-            <LogOut size={16} />
-            Çıkış Yap
-          </button>
+          {showCreditCard ? (
+            <Link href="/panel/faturalama" onClick={onClose} className="relative block rounded-lg p-[1px] overflow-hidden">
+              <span className="absolute inset-[-140%] bg-[conic-gradient(from_0deg,_#4f46e5,_#10b981,_#4f46e5)] animate-[spin_4s_linear_infinite]" />
+              <span className="relative flex items-center justify-center gap-2 px-4 py-2 rounded-[7px] bg-white text-slate-700 text-[13px] font-bold border border-slate-100">
+                <Plus size={15} />
+                Kredi Yükle
+              </span>
+            </Link>
+          ) : (
+            <button className="w-full flex items-center justify-center gap-2 text-slate-500 hover:text-rose-600 hover:bg-rose-50 px-4 py-2 rounded-lg text-sm font-medium transition-colors border border-slate-200">
+              <LogOut size={16} />
+              Çıkış Yap
+            </button>
+          )}
         </div>
       </aside>
     </>

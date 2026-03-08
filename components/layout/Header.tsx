@@ -46,7 +46,7 @@ export default function Header({ onMenuToggle }: { onMenuToggle: () => void }) {
   const pageInfo = getPageInfo(pathname);
 
   return (
-    <header className={`h-16 lg:h-20 pr-4 pl-16 lg:px-8 flex items-center justify-between bg-white shrink-0 ${pathname === '/panel/projeler' ? '' : 'border-b border-slate-200'}`}>
+    <header className="h-16 lg:h-20 pr-4 pl-16 lg:px-8 flex items-center justify-between bg-white border-b border-slate-200 shrink-0">
       <div className="flex flex-col">
         <h1 className="text-lg lg:text-xl font-bold text-slate-900">{pageInfo.title}</h1>
         {pageInfo.subtitle && (
