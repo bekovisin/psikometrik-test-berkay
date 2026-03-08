@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import * as Dialog from '@radix-ui/react-dialog';
+import { NewProjectModal } from '@/components/musteri-paneli/NewProjectModal';
 
 type ProjectStatus = 'Aktif' | 'Beklemede' | 'Tamamlandı' | 'Arşiv';
 
@@ -50,6 +51,7 @@ export default function ProjelerPage() {
   const [isSelectMode, setIsSelectMode] = useState(false);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [sortLabel, setSortLabel] = useState('Yeniden Eskiye');
+  const [isNewProjectModalOpen, setIsNewProjectModalOpen] = useState(false);
 
   const [modalConfig, setModalConfig] = useState<{
     isOpen: boolean;
@@ -163,21 +165,21 @@ export default function ProjelerPage() {
   return (
     <div className="flex flex-col gap-0">
       {/* Tab menü: navbar'ın hemen altında, tek başlık yok (başlık Header'da) */}
-      <div className="bg-white border-b border-slate-200 -mx-4 lg:-mx-6 px-4 lg:px-6 py-3">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+      <div className="bg-white border-b border-slate-200 -mx-4 lg:-mx-6 px-4 lg:px-6 pt-0">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0">
           <div className="flex gap-5 -mb-[1px] overflow-x-auto w-full sm:w-auto no-scrollbar">
             {(['Tümü', 'Aktif', 'Beklemede', 'Tamamlandı', 'Arşiv'] as const).map((tab) => (
               <button
                 key={tab}
                 onClick={() => setFilter(tab)}
-                className={`pb-3 text-xs font-medium border-b-2 transition-colors whitespace-nowrap ${filter === tab ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'}`}
+                className={`py-3 text-[13px] font-medium border-b-2 transition-colors whitespace-nowrap ${filter === tab ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'}`}
               >
                 {tab}
               </button>
             ))}
           </div>
 
-          <div className="flex items-center gap-2 pb-3">
+          <div className="flex items-center gap-2 pb-3 sm:pb-0">
             <DropdownMenu.Root>
               <DropdownMenu.Trigger asChild>
                 <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors">
@@ -265,16 +267,16 @@ export default function ProjelerPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5">
           {/* Yeni Proje Kartı */}
           {filter === 'Tümü' && (
-            <Link
-              href="#"
-              className="bg-white border-2 border-dashed border-slate-300 rounded-xl flex flex-col items-center justify-center text-slate-500 hover:text-indigo-600 hover:border-indigo-300 hover:bg-indigo-50/50 transition-all min-h-[280px] group"
+            <button
+              onClick={() => setIsNewProjectModalOpen(true)}
+              className="bg-white border-2 border-dashed border-slate-300 rounded-xl flex flex-col items-center justify-center text-slate-500 hover:text-indigo-600 hover:border-indigo-300 hover:bg-indigo-50/50 transition-all min-h-[280px] group outline-none focus:ring-2 focus:ring-indigo-500"
             >
               <div className="w-10 h-10 rounded-full bg-slate-100 group-hover:bg-indigo-100 flex items-center justify-center mb-3 transition-colors">
                 <Plus size={20} className="text-slate-400 group-hover:text-indigo-600" />
               </div>
               <span className="font-bold text-sm">Yeni Proje Oluştur</span>
               <span className="text-xs mt-0.5 opacity-70">Sıfırdan veya şablondan</span>
-            </Link>
+            </button>
           )}
 
           {filteredProjects.map((p) => {
@@ -439,6 +441,12 @@ export default function ProjelerPage() {
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
+
+      {/* Yeni Proje Modalı */}
+      <NewProjectModal
+        isOpen={isNewProjectModalOpen}
+        onClose={() => setIsNewProjectModalOpen(false)}
+      />
     </div>
   );
 }

@@ -1,0 +1,45 @@
+---
+description: Müşteri Paneli Tasarım Sistemi Kuralları
+globs: app/panel/**/*.tsx, components/musteri-paneli/**/*.tsx
+alwaysApply: false
+---
+
+# Müşteri Paneli Tasarım Sistemi (Design System)
+
+Bu kurallar, müşteri panelindeki sayfalar ve bileşenler (dashboard, projeler vb.) geliştirilirken kullanılacak UI boyutlarını, boşlukları ve temel stilleri belirler.
+
+## Layout (Düzen)
+- **Ana İçerik Alanı:** `max-w-[1400px] mx-auto` (Kartların dizildiği grid veya tablolar için)
+- **Tam Genişlik (Full-width):** Header, tab menü şeridi ve sticky toplu işlem çubukları gibi alanlar `-mx-4 lg:-mx-6 px-4 lg:px-6` ile ana kapsayıcının dışına taşırılarak tam genişlikte kullanılabilir.
+
+## Border Radius (Köşe Yuvarlama)
+- **Büyük Kartlar ve Modallar:** `rounded-xl`
+- **Butonlar, Küçük Kartlar, Rozetler ve Inputlar:** `rounded-lg`
+
+## Padding ve Spacing (Boşluklar)
+- **Kart İçi Standart Boşluk:** `p-5` veya `p-6` (Önceki dar padding değerleri kullanılmamalı).
+- **Liste/Satır Elemanları:** `p-3.5` veya `p-4`.
+- **Bileşenler Arası Dikey Boşluk:** `gap-4` veya `gap-5`.
+
+## Typography (Yazı Tipleri - Ölçeklendirilmiş)
+- **Sayfa/Modal Başlıkları (H1/H2):** `text-lg` veya `text-xl font-bold text-slate-900`.
+- **Kart Başlıkları (H3):** `text-sm font-bold` (Önceki `text-xs` kullanılmamalı).
+- **Gövde Metni (Body):** `text-[13px] text-slate-500` (Önceki `text-xs` kullanılmamalı).
+- **Küçük Metin / Meta (Small):** `text-xs text-slate-500` (Önceki `text-[10px]` veya `text-[11px]` kullanılmamalı).
+- **Rozet (Badge) Metni:** `text-xs font-medium` veya `text-[11px] font-bold`.
+
+## Butonlar
+- **Primary (Birincil):** `bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4 py-2 text-[13px] font-bold transition-colors`
+- **Secondary/Outline (İkincil):** `bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-lg px-4 py-2 text-[13px] font-bold transition-colors`
+- **Small Actions (Küçük İşlemler):** `px-3.5 py-1.5 text-xs font-medium` (örn. Sırala, Seç butonları).
+- Tüm etkileşimli butonlarda `outline-none focus:ring-2 focus:ring-indigo-500` kullanılmalıdır.
+
+## Renk Paleti
+- **Arkaplanlar:** `bg-slate-50` (Genel Arkaplan), `bg-white` (Kartlar ve Modallar).
+- **Kenarlıklar (Border):** `border-slate-200`, Hover durumları için `border-indigo-300`.
+- **Durum Renkleri (Rozetler & Progress Bar):** 
+  - Aktif: `emerald`
+  - Beklemede: `amber`
+  - Tamamlandı: `indigo`
+  - Arşiv: `slate`
+  - Hata/Sil: `rose`
