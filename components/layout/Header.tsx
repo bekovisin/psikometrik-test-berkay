@@ -13,7 +13,7 @@ const pageTitles: Record<string, { title: string; subtitle?: string }> = {
   '/admin/soru-bankasi/yeni': { title: 'Yeni Soru Ekle', subtitle: 'Soru bankasına yeni soru ekleyin' },
   '/admin/soru-uretici': { title: 'Soru Üretici', subtitle: 'AI destekli soru üretim aracı' },
   '/panel': { title: 'Dashboard', subtitle: 'Proje takibi ve aday değerlendirme' },
-  '/panel/projeler': { title: 'Projeler', subtitle: 'Tüm projeleriniz' },
+  '/panel/projeler': { title: 'Projeler', subtitle: 'Tüm işe alım projelerinizi buradan yönetin.' },
   '/panel/oturumlar': { title: 'Oturumlar', subtitle: 'Devam eden oturumlar' },
   '/panel/faturalama': { title: 'Faturalandırma', subtitle: 'Kredi ve ödeme yönetimi' },
   '/panel/ayarlar': { title: 'Ayarlar', subtitle: 'Hesap ve tercih ayarları' },

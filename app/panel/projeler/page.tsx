@@ -162,22 +162,9 @@ export default function ProjelerPage() {
 
   return (
     <div className="flex flex-col gap-0">
-      {/* Başlık ve tab menü: 1400px sınırı yok, tam genişlik */}
-      <div className="bg-white border-b border-slate-200 -mx-4 lg:-mx-6 px-4 lg:px-6 pt-4 lg:pt-6 pb-4">
-        <div className="flex justify-between items-end">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0">
-              <Layers size={20} />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-slate-900 mb-0.5">Projeler</h1>
-              <p className="text-xs text-slate-500 hidden sm:block">Tüm işe alım projelerinizi buradan yönetin.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Tab menü ve kontroller */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mt-4">
+      {/* Tab menü: navbar'ın hemen altında, tek başlık yok (başlık Header'da) */}
+      <div className="bg-white border-b border-slate-200 -mx-4 lg:-mx-6 px-4 lg:px-6 py-3">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
           <div className="flex gap-5 -mb-[1px] overflow-x-auto w-full sm:w-auto no-scrollbar">
             {(['Tümü', 'Aktif', 'Beklemede', 'Tamamlandı', 'Arşiv'] as const).map((tab) => (
               <button
@@ -299,7 +286,7 @@ export default function ProjelerPage() {
             return (
               <div
                 key={p.id}
-                className={`bg-white border rounded-xl shadow-sm flex flex-col transition-all overflow-hidden min-h-[280px] relative ${
+                className={`bg-white border rounded-xl shadow-sm flex flex-col transition-all overflow-hidden min-h-[280px] relative group ${
                   isSelected ? 'border-indigo-500 ring-1 ring-indigo-500' : 'border-slate-200 hover:border-indigo-300 cursor-pointer'
                 }`}
                 onClick={() => isSelectMode ? toggleSelection(p.id) : undefined}
@@ -364,6 +351,7 @@ export default function ProjelerPage() {
                     )}
                   </div>
 
+                  <h3 className="font-bold text-slate-900 text-sm mb-1.5 line-clamp-2 group-hover:text-indigo-600 transition-colors">{p.title}</h3>
                   <p className="text-xs text-slate-500 mb-3 line-clamp-2 flex-1 leading-relaxed">{p.description}</p>
 
                   <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[10px] text-slate-500 font-medium mb-4">
