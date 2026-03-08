@@ -1,0 +1,8 @@
+.env
+pdfs/
+output/
+history/
+__pycache__/
+*.pyc
+.venv/
+venv/

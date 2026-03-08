@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+}
+
+@layer components {
+  .diff-cok-kolay {
+    @apply bg-blue-100 text-blue-800;
+  }
+  .diff-kolay {
+    @apply bg-green-100 text-green-800;
+  }
+  .diff-orta {
+    @apply bg-amber-100 text-amber-800;
+  }
+  .diff-zor {
+    @apply bg-red-100 text-red-800;
+  }
+  .diff-cok-zor {
+    @apply bg-purple-100 text-purple-800;
+  }
+}
+
+/* SVG container sizing via CSS custom properties */
+.svg-question {
+  display: contents;
+}
+.svg-question > svg {
+  max-height: var(--svg-max-h, 200px);
+  width: 100%;
+  height: auto;
+}
+.svg-option > svg {
+  height: var(--svg-opt-h, 48px);
+  width: auto;
+}
+.svg-card-preview > svg {
+  max-height: 64px;
+  width: 100%;
+}
+
+/* ========== SCROLL WRAPPER (editor + preview) ========== */
+.table-scroll-wrap {
+  overflow-x: auto;
+  max-width: 100%;
+}
+/* Always show scrollbar so user knows table is scrollable */
+.table-scroll-wrap::-webkit-scrollbar {
+  height: 8px;
+}
+.table-scroll-wrap::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 4px;
+}
+.table-scroll-wrap::-webkit-scrollbar-track {
+  background: #e2e8f0;
+  border-radius: 4px;
+}
+
+/* Editor: prevent contentEditable from expanding; scroll wrapper handles it */
+.rte-editor {
+  overflow-x: hidden !important;
+}
+.rte-editor .table-scroll-wrap {
+  overflow-x: auto;
+  /* Width = editor inner width (accounts for padding via calc) */
+  max-width: 100%;
+}
+
+/* ========== COLUMN SELECTION HIGHLIGHT ========== */
+.rte-editor [data-col-selected="true"] {
+  background-color: #dbeafe !important;
+  outline: 2px solid #60a5fa;
+  outline-offset: -2px;
+}
+/* Subtle animation for selection */
+.rte-editor [data-col-selected="true"]::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+/* ========== TABLE STYLES ========== */
+
+/* ---- Preview / Detail view ---- */
+/* Scrollable table wrapper */
+.rich-text-content {
+  overflow-x: auto;
+}
+.rich-text-content table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  min-width: 100%;
+  margin: 8px 0;
+}
+.rich-text-content th,
+.rich-text-content td {
+  border-right: 1px solid #d1d5db;
+  border-bottom: 1px solid #d1d5db;
+  padding: 6px 10px;
+  text-align: left;
+}
+/* Top border on first row */
+.rich-text-content tr:first-child th,
+.rich-text-content tr:first-child td {
+  border-top: 1px solid #d1d5db;
+}
+/* Left border on first column */
+.rich-text-content th:first-child,
+.rich-text-content td:first-child {
+  border-left: 1px solid #d1d5db;
+}
+.rich-text-content th {
+  background: #f3f4f6;
+  font-weight: 600;
+}
+.rich-text-content tr:nth-child(even) td {
+  background: #f9fafb;
+}
+
+/* ---- Sticky first column (preview) ---- */
+.rich-text-content th:first-child,
+.rich-text-content td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: white;
+  box-shadow: 2px 0 4px -2px rgba(0,0,0,0.1);
+}
+.rich-text-content th:first-child {
+  background: #f3f4f6;
+  z-index: 2;
+}
+.rich-text-content tr:nth-child(even) td:first-child {
+  background: #f9fafb;
+}
+
+/* ---- Editor (contentEditable) ---- */
+[contenteditable] table,
+.rte-editor table {
+  border-collapse: collapse !important;
+  min-width: 100%;
+  margin: 8px 0;
+  border: 1px solid #9ca3af;
+}
+[contenteditable] th,
+[contenteditable] td,
+.rte-editor th,
+.rte-editor td {
+  border: 1px solid #9ca3af !important;
+  padding: 6px 10px;
+  text-align: left;
+  min-width: 30px;
+  position: relative;
+}
+[contenteditable] th,
+.rte-editor th {
+  background: #e5e7eb;
+  font-weight: 600;
+}
+
+/* Active cell highlight — uses data-active-cell attribute set by JS */
+[contenteditable] td[data-active-cell="true"],
+[contenteditable] th[data-active-cell="true"],
+.rte-editor td[data-active-cell="true"],
+.rte-editor th[data-active-cell="true"] {
+  outline: 3px solid #6366f1 !important;
+  outline-offset: -3px;
+  background: #eef2ff !important;
+  box-shadow: inset 0 0 0 1px #6366f1;
+}
+
+/* Hover highlight on table cells */
+[contenteditable] td:hover,
+[contenteditable] th:hover,
+.rte-editor td:hover,
+.rte-editor th:hover {
+  background: #f5f3ff;
+}
+
+/* Make table inline styles have higher specificity for borders */
+table[style] th,
+table[style] td {
+  border: 1px solid #9ca3af !important;
+}
+
+/* QuestionCard table: hide in compact preview */
+.rich-text-content.line-clamp-2 table {
+  display: none;
+}
