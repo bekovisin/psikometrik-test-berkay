@@ -165,7 +165,7 @@ export default function ProjelerPage() {
   return (
     <div className="flex flex-col gap-0">
       {/* Tab menü: navbar'ın hemen altında, tek başlık yok (başlık Header'da) */}
-      <div className="bg-white border-b border-slate-200 -mx-4 lg:-mx-6 px-4 lg:px-6 pt-0">
+      <div className="bg-white border-b border-slate-200 -mx-4 lg:-mx-6 -mt-4 lg:-mt-6 px-4 lg:px-6 pt-0">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0">
           <div className="flex gap-5 -mb-[1px] overflow-x-auto w-full sm:w-auto no-scrollbar">
             {(['Tümü', 'Aktif', 'Beklemede', 'Tamamlandı', 'Arşiv'] as const).map((tab) => (
@@ -307,7 +307,7 @@ export default function ProjelerPage() {
                   </div>
                 )}
 
-                <div className={`p-4 flex flex-col flex-1 ${isSelectMode ? 'pl-9' : ''}`}>
+                <div className={`p-4 flex flex-col flex-1 ${isSelectMode ? 'pl-11' : ''}`}>
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <span className={`px-2 py-0.5 rounded-full text-[10px] font-medium shrink-0 ${getStatusColor(p.status)}`}>
                       {p.status}
@@ -416,20 +416,20 @@ export default function ProjelerPage() {
                 <AlertTriangle size={20} />
               </div>
               <div>
-                <Dialog.Title className="text-base font-bold text-slate-900">{modalConfig.title}</Dialog.Title>
-                <Dialog.Description className="text-xs text-slate-500 mt-1.5">{modalConfig.description}</Dialog.Description>
+                <Dialog.Title className="text-xl font-bold text-slate-900">{modalConfig.title}</Dialog.Title>
+                <Dialog.Description className="text-base text-slate-500 mt-1.5">{modalConfig.description}</Dialog.Description>
               </div>
             </div>
             <div className="flex gap-2 mt-2">
               <button
                 onClick={closeModal}
-                className="flex-1 py-2 bg-white border border-slate-200 text-slate-700 text-xs font-bold rounded-lg hover:bg-slate-50 transition-colors"
+                className="flex-1 py-2 bg-white border border-slate-200 text-slate-700 text-base font-bold rounded-lg hover:bg-slate-50 transition-colors"
               >
                 İptal
               </button>
               <button
                 onClick={modalConfig.onConfirm}
-                className={`flex-1 py-2 text-white text-xs font-bold rounded-lg transition-colors ${modalConfig.actionType === 'danger' ? 'bg-rose-600 hover:bg-rose-700' : 'bg-indigo-600 hover:bg-indigo-700'}`}
+                className={`flex-1 py-2 text-white text-base font-bold rounded-lg transition-colors ${modalConfig.actionType === 'danger' ? 'bg-rose-600 hover:bg-rose-700' : 'bg-indigo-600 hover:bg-indigo-700'}`}
               >
                 {modalConfig.actionLabel}
               </button>
